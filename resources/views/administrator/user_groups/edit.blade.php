@@ -2,17 +2,16 @@
 
 @section('content')
     <!-- Basic Tables start -->
-    @push('section_header')
-        <h1>User Groups</h1>
-        <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item active"><a href="{{ route('admin.user_groups') }}">User Groups</a></div>
-            <div class="breadcrumb-item">Edit</div>
+        <div class="page-header">
+            <h3 class="page-title"> User Groups </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('admin.user_groups') }}">User Groups</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                </ol>
+            </nav>
         </div>
-    @endpush
-    @push('section_title')
-        User Group
-    @endpush
         <div class="card">
             <div class="card-content">
                 <div class="card-body">

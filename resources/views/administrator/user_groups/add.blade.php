@@ -1,18 +1,16 @@
 @extends('administrator.layouts.main')
 
 @section('content')
-    @push('section_header')
-        <h1>User Groups</h1>
-        <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item active"><a href="{{ route('admin.user_groups') }}">User Groups</a></div>
-            <div class="breadcrumb-item">Add</div>
-        </div>
-    @endpush
-    @push('section_title')
-        User Group
-    @endpush
-    
+<div class="page-header">
+    <h3 class="page-title"> User Groups </h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('admin.user_groups') }}">User Groups</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add</li>
+        </ol>
+    </nav>
+</div>
     <div class="card">
         <div class="card-content">
             <div class="card-body">
@@ -113,7 +111,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="status" value="1"
                                             id="flexRadioDefault1" checked data-parsley-required="true">
-                                        <label class="form-check-label form-label" for="flexRadioDefault1">
+                                        <label class="form-check-label form-label m-1" for="flexRadioDefault1">
                                             Aktif
                                         </label>
                                     </div>

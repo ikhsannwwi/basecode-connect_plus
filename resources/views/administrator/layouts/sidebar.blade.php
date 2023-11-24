@@ -1,52 +1,114 @@
-<div class="main-sidebar sidebar-style-2">
-    <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <a
-                href="/">{{ array_key_exists('nama_app_admin', $settings) ? $settings['nama_app_admin'] : '' }}</a>
-        </div>
-        <div class="sidebar-brand sidebar-brand-sm">
-            <a href="/">
-                <?php
-                $namaText = array_key_exists('nama_app_admin', $settings) ? $settings['nama_app_admin'] : '';
-                $twoInitialChars = strtoupper(substr($namaText, 0, 2));
-                echo $twoInitialChars;
-                ?>
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+        <li class="nav-item nav-category">Main</li>
+        <li class="nav-item {{ Route::is('admin.dashboard*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
+                <span class="menu-title">Dashboard</span>
             </a>
-        </div>
-        <ul class="sidebar-menu">
-            <li class="menu-header">Dashboard</li>
-            <li class="{{ Route::is('admin.dashboard*') ? 'active' : '' }}"><a class="nav-link" href="blank.html"><i class="fas fa-columns"></i><span>Dashboard</span></a></li>
-            <li class="menu-header">Menu</li>
-            <li class="dropdown {{ Route::is('admin.login*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-database"></i>
-                    <span>Data Master</span></a>
-                <ul class="dropdown-menu">
-                    <li><a class="nav-link" href="{{route('admin.login')}}">Default Layout</a></li>
+        </li>
+        <li class="nav-item nav-category">Menu</li>
+        <li class="nav-item {{ Route::is('admin.login*', 'admin.login*') ? 'active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#dataMaster" aria-expanded="{{ Route::is('admin.login*', 'admin.login*') ? 'true' : 'false' }}"
+                aria-controls="dataMaster">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">Data Master</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ Route::is('admin.login*', 'admin.login*') ? 'show' : '' }}" id="dataMaster">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link"
+                            href="pages/ui-features/buttons.html">Buttons</a></li>
                 </ul>
-            </li>
-            <li class="dropdown {{ Route::is('admin.users*','admin.user_groups*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-users-cog"></i>
-                    <span>User Management</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ Route::is('admin.user_groups*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.user_groups')}}">User Group</a></li>
-                    <li class="{{ Route::is('admin.users*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.users')}}">User</a></li>
+            </div>
+        </li>
+        <li class="nav-item {{ Route::is('admin.users*', 'admin.user_groups*') ? 'active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#userManagement" aria-expanded="{{ Route::is('admin.users*', 'admin.user_groups*') ? 'true' : 'false' }}"
+                aria-controls="userManagement">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">User Management</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ Route::is('admin.users*', 'admin.user_groups*') ? 'show' : '' }}" id="userManagement">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.user_groups') }}">User Groups</a></li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.users') }}">Users</a></li>
                 </ul>
-            </li>
-            <li class="dropdown {{ Route::is('admin.logSystems*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-bezier-curve"></i>
-                    <span>Systems</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ Route::is('admin.logSystems*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.logSystems')}}">Logs</a></li>
+            </div>
+        </li>
+        <li class="nav-item {{ Route::is('admin.logSystems*') ? 'active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#systems" aria-expanded="{{ Route::is('admin.logSystems*') ? 'true' : 'false' }}"
+                aria-controls="systems">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">Systems</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ Route::is('admin.logSystems*') ? 'show' : '' }}" id="systems">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.logSystems') }}">Logs</a></li>
                 </ul>
-            </li>
-            <li class="{{ Route::is('admin.profile*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.profile',auth()->user()->kode)}}"><i class="fas fa-solid fa-user"></i> <span>Profile</span></a></li>
-            <li class="dropdown {{ Route::is('admin.settings*','admin.module*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-cogs"></i> <span>Settings</span></a>
-                <ul class="dropdown-menu">
-                    <li class="{{ Route::is('admin.settings*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.settings')}}">Setting General</a></li>
-                    <li class="{{ Route::is('admin.module*') ? 'active' : '' }}"><a class="nav-link" href="{{route('admin.module')}}">Module Management</a></li>
+            </div>
+        </li>
+        <li class="nav-item {{ Route::is('admin.profile*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('admin.profile', auth()->user()->kode) }}">
+                <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
+                <span class="menu-title">Profile</span>
+            </a>
+        </li>
+        <li class="nav-item {{ Route::is('admin.settings*','admin.module*') ? 'active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="{{ Route::is('admin.settings*','admin.module*') ? 'true' : 'false' }}"
+                aria-controls="settings">
+                <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+                <span class="menu-title">Settings</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ Route::is('admin.settings*','admin.module*') ? 'show' : '' }}" id="settings">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.settings') }}">Setting General</a></li>
+                    <li class="nav-item"> <a class="nav-link"
+                            href="{{ route('admin.module') }}">Module Management</a></li>
                 </ul>
-            </li>
-        </ul>
-    </aside>
-</div>
+            </div>
+        </li>
+        <li class="nav-item sidebar-user-actions">
+            <div class="user-details">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="d-flex align-items-center">
+                            <div class="sidebar-profile-img">
+                                <img src="{{template_admin('images/faces/face28.png')}}" alt="image">
+                            </div>
+                            <div class="sidebar-profile-text">
+                                <p class="mb-1">Henry Klein</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="badge badge-danger">3</div>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item sidebar-user-actions">
+            <div class="sidebar-user-menu">
+                <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
+                    <span class="menu-title">Settings</span>
+                </a>
+            </div>
+        </li>
+        <li class="nav-item sidebar-user-actions">
+            <div class="sidebar-user-menu">
+                <a href="#" class="nav-link"><i class="mdi mdi-speedometer menu-icon"></i>
+                    <span class="menu-title">Take Tour</span></a>
+            </div>
+        </li>
+        <li class="nav-item sidebar-user-actions">
+            <div class="sidebar-user-menu">
+                <a href="#" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
+                    <span class="menu-title">Log Out</span></a>
+            </div>
+        </li>
+    </ul>
+</nav>

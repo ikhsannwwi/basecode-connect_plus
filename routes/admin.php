@@ -24,6 +24,8 @@ use App\Http\Controllers\admin\UserGroupController;
 
 // ------------------------------------------  Admin -----------------------------------------------------------------
 Route::prefix('admin')->group(function () {
+    Route::post('login/checkEmail', [AuthController::class, 'checkEmail'])->name('admin.login.checkEmail');
+    Route::post('login/checkPassword', [AuthController::class, 'checkPassword'])->name('admin.login.checkPassword');
     Route::get('login', [AuthController::class, 'login'])->name('admin.login');
     Route::post('loginProses', [AuthController::class, 'loginProses'])->name('admin.loginProses');
     Route::get('logout', [AuthController::class, 'logout'])->name('admin.logout');

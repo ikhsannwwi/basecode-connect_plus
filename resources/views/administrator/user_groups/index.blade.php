@@ -1,45 +1,46 @@
 @extends('administrator.layouts.main')
 
 @section('content')
-    @push('section_header')
-        <h1>User Groups</h1>
-        <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item">User Groups</div>
-        </div>
-    @endpush
-    @push('section_title')
-        User Group
-    @endpush
-
+    <div class="page-header">
+        <h3 class="page-title"> User Groups </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">User Groups</li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 grid-margin stretch-card">
             <div class="card">
-                <div class="card-header">
-                    <div class="col-8">
-                        <h4>List Data</h4>
-                    </div>
-                    <div class="col-4" style="display: flex; justify-content: flex-end;">
-                        <a href="javascript:void(0)" class="btn btn-primary" id="filterButton" style="text-align: center;">Filter</a>
-                        @if (isallowed('user', 'add'))
-                            <a href="{{ route('admin.user_groups.add') }}" class="btn btn-primary mx-3" style="text-align: center;">Tambah Data</a>
-                        @endif
-                    </div>
-                </div>
-                @include('administrator.user_groups.filter.main')
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table" id="datatable">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th width="325px">Nama</th>
-                                    <th width="250px">Status</th>
-                                    <th width="200px">Action</th>
-                                </tr>
-                            </thead>
-                        </table>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="card-title">List Kas</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex float-end gap-2">
+                                <a href="javascript:void(0)" class="btn btn-primary" id="filterButton"
+                                    style="text-align: center;">Filter</a>
+                                @if (isallowed('user', 'add'))
+                                    <a href="{{ route('admin.user_groups.add') }}" class="btn btn-primary mx-3"
+                                        style="text-align: center;">Tambah Data</a>
+                                @endif
+                            </div>
+                        </div>
                     </div>
+                    </p>
+                    @include('administrator.user_groups.filter.main')
+                    <table class="table table-hover" id="datatable">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th width="325px">Nama</th>
+                                <th width="250px">Status</th>
+                                <th width="200px">Action</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>

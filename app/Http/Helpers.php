@@ -14,9 +14,9 @@ function asset_administrator($url)
 	return asset('administrator/' . $url);
 }
 
-function template_stisla($url)
+function template_admin($url)
 {
-	return asset('templateStisla/dist/assets/' . $url);
+	return asset('templateConnectPlus/assets/' . $url);
 }
 
 function asset_frontpage($url)

@@ -1,8 +1,11 @@
-<footer class="main-footer">
-    <div class="footer-left">
-        {{ array_key_exists('footer_app_admin', $settings) ? $settings['footer_app_admin'] : '' }} <div class="bullet"></div> Develop By <a href="https://ikhsannawawi.epizy.com/">Mochammad Ikhsan Nawawi</a>
-    </div>
-    <div class="footer-right">
-
+<footer class="footer">
+    <div class="footer-inner-wraper">
+        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright ©
+                bootstrapdash.com 2020</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+                    href="https://www.bootstrapdash.com/" target="_blank">Bootstrap dashboard
+                    templates</a> from Bootstrapdash.com</span>
+        </div>
     </div>
 </footer>
